@@ -3,6 +3,9 @@ import streamlit as st
 def descripcion_app():
     # URL de la imagen en GitHub
     image_url = "https://github.com/Sawamurarebatta/Recihome-/blob/main/SEGUNDO_PROYECTO/uno.png?raw=true"
+    
+    # URL del GIF
+    gif_url = "https://github.com/Sawamurarebatta/Recihome-/blob/main/SEGUNDO_PROYECTO/1234.gif?raw=true"
 
     # Crear un diseño de dos columnas
     col1, col2 = st.columns([1, 3])
@@ -58,3 +61,8 @@ def descripcion_app():
             - Andrea Villamjizar Maravi
             """
         )
+
+        # Mostrar el GIF en la parte inferior
+        st.image(gif_url, use_column_width=True)
+
+
