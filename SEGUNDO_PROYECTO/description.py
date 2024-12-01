@@ -62,7 +62,13 @@ def descripcion_app():
             """
         )
 
-        # Mostrar el GIF en la parte inferior
-        st.image(gif_url, use_column_width=True)
+    # Usar Markdown para inyectar el GIF con tamaño reducido y alineado a la derecha
+    st.markdown(
+        f"""
+        <div style="display: flex; justify-content: flex-end;">
+            <img src="{gif_url}" width="150" />
+        </div>
+        """, unsafe_allow_html=True
+    )
 
 
