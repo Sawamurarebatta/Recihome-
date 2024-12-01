@@ -4,11 +4,12 @@ import streamlit as st
 # Función para la página principal
 def pagina_principal():
     # URL del GIF de fondo
-    gif_url = "https://github.com/Sawamurarebatta/Recihome-/blob/main/SEGUNDO_PROYECTO/appl.gif?raw=true"
-    # URL del logotipo
-    logo_url = "https://github.com/Sawamurarebatta/Recihome-/blob/main/SEGUNDO_PROYECTO/logo.png?raw=true"
+    gif_url = "https://github.com/Sawamurarebatta/Recihome-/blob/main/SEGUNDO_PROYECTO/appl.gif?raw=true"  # URL del GIF
 
-    # Título con logotipo
+    # URL del logo
+    logo_url = "https://github.com/Sawamurarebatta/Recihome-/blob/main/SEGUNDO_PROYECTO/logo.png?raw=true"  # URL del logo
+
+    # Diseño de la página
     st.markdown(f"""
         <style>
             .stApp {{
@@ -17,16 +18,13 @@ def pagina_principal():
                 background-size: cover;
                 background-position: center;
                 height: 100vh;
-                color: white; /* Cambia el color de texto para hacerlo visible sobre el GIF */
+                color: white;  /* Cambia el color de texto para hacerlo visible sobre el GIF */
             }}
-            .logo {{
+            .logo-container {{
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                margin-bottom: 20px;
-            }}
-            .logo img {{
-                width: 200px; /* Ajusta el tamaño del logo */
+                height: 80vh;  /* Ajustar la altura para centrar verticalmente */
             }}
             p {{
                 font-size: 20px;
@@ -34,10 +32,9 @@ def pagina_principal():
                 font-family: 'Arial', sans-serif;
             }}
         </style>
-        <div class="logo">
-            <img src="{logo_url}" alt="Recihome Logo">
+        <div class="logo-container">
+            <img src="{logo_url}" alt="Logo" style="max-width: 300px; height: auto;">
         </div>
-        
         <p style="font-size: 18px; text-align: center;">
             Usa el menú de la izquierda para navegar entre páginas.
         </p>
