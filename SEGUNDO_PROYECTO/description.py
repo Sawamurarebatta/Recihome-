@@ -2,7 +2,7 @@ import streamlit as st
 
 def descripcion_app():
     # URL de la imagen en GitHub
-    image_url = "https://github.com/Sawamurarebatta/Recihome-/blob/main/SEGUNDO_PROYECTO/Imagen2.jpg?raw=true"
+    image_url = "https://github.com/Sawamurarebatta/Recihome-/blob/main/SEGUNDO_PROYECTO/uno.jpg?raw=true"
 
     # Crear un diseño de dos columnas
     col1, col2 = st.columns([1, 3])
