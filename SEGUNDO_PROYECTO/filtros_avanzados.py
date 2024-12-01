@@ -51,7 +51,7 @@ def filtros_avanzados(archivo_cargado):
         tipo_residuo = st.selectbox("Selecciona el Tipo de Residuo:", tipos_residuo)
     
     # Filtrar datos según las selecciones y los años 2019 a 2022
-    datos_filtrados = archivo_cargado[
+    datos_filtrados = archivo_cargado[ 
         (archivo_cargado['REG_NAT'] == region_seleccionada) &
         ((archivo_cargado['DEPARTAMENTO'] == departamento_seleccionado) | (departamento_seleccionado == "Todos")) &
         ((archivo_cargado['DISTRITO'] == distrito_seleccionado) | (distrito_seleccionado == "Todos")) &
@@ -108,7 +108,7 @@ def filtros_avanzados(archivo_cargado):
     else:
         titulo_grafico = f"Cantidad de {tipo_residuo_titulo} en {distrito_titulo} durante los años 2019 a 2022"
 
-    # Crear gráfico de barras
+    # Crear gráfico de barras con colores específicos
     fig_bar = px.bar(
         datos_filtrados,
         x='PERIODO',
@@ -117,7 +117,7 @@ def filtros_avanzados(archivo_cargado):
         title=titulo_grafico,
         labels={y_column: "Cantidad (kg)", "PERIODO": "Año"},
         text_auto=False,  # Desactivar el texto automático
-        color_discrete_sequence=px.colors.qualitative.T10  # Colores más variados
+        color_discrete_sequence=["#640D5F", "#D91656", "#EB5B00", "#FFB200"]  # Colores personalizados
     )
     
     # Calcular el total acumulado por columna
@@ -131,8 +131,8 @@ def filtros_avanzados(archivo_cargado):
     fig_bar.update_layout(
         title={
             'text': titulo_grafico,
-            'y':0.9,
-            'x':0.5,
+            'y': 0.9,
+            'x': 0.5,
             'xanchor': 'center',
             'yanchor': 'top'
         },
@@ -141,113 +141,11 @@ def filtros_avanzados(archivo_cargado):
             tickvals=[2019, 2020, 2021, 2022],
             ticktext=['2019', '2020', '2021', '2022']
         ),
-        paper_bgcolor='rgba(0, 51, 51, 1)',  # Fondo del gráfico
+        paper_bgcolor='#272829',  # Fondo del gráfico
         plot_bgcolor='rgba(255, 255, 255, 1)',  # Fondo del área de trazado
-        font=dict(color='white'),  # Texto blanco para contraste
-        width=800,  # Aumentar la anchura del gráfico
-        height=600,  # Ajustar la altura del gráfico
-        margin=dict(l=0, r=0, t=100, b=50)  # Centrando el gráfico y aumentar el margen superior
+        font=dict(color='white'),  # Texto blanco
+        margin=dict(l=50, r=50, t=50, b=50),  # Márgenes
     )
 
-    # Crear gráfico circular para tipos de residuos
-    if tipo_residuo == "Todos":
-        fig_pie_residuos = px.pie(
-            datos_filtrados,
-            names='TIPO_RESIDUO',
-            values='Cantidad',
-            title='Distribución porcentual de tipos de residuos',
-            color_discrete_sequence=px.colors.qualitative.T10  # Colores más variados
-        )
-        fig_pie_residuos.update_traces(textposition='inside', textinfo='percent+label')
-    else:
-        # Crear un DataFrame específico para el gráfico circular
-        datos_circular = pd.DataFrame({'Tipo Residuo': [tipo_residuo_titulo], 'Cantidad': [datos_filtrados['Cantidad'].sum()]})
-        fig_pie_residuos = px.pie(
-            datos_circular,
-            names='Tipo Residuo',
-            values='Cantidad',
-            title=f'Distribución porcentual de {tipo_residuo_titulo}',
-            color_discrete_sequence=px.colors.qualitative.T10  # Colores más variados
-        )
-        fig_pie_residuos.update_traces(textposition='inside', textinfo='percent+label')
-
-    # Personalizar el gráfico circular de tipos de residuos
-    fig_pie_residuos.update_layout(
-        title={
-            'text': 'Distribución porcentual de tipos de residuos',
-            'y':0.9,
-            'x':0.5,
-            'xanchor': 'center',
-            'yanchor': 'top'
-        },
-        paper_bgcolor='rgba(0, 51, 51, 1)',  # Fondo del gráfico
-        plot_bgcolor='rgba(255, 255, 255, 1)',  # Fondo del área de trazado
-        font=dict(color='white'),  # Texto blanco para contraste
-        width=800,  # Ajustar la anchura del gráfico
-        height=600,  # Ajustar la altura del gráfico
-        margin=dict(l=0, r=0, t=100, b=50)  # Centrando el gráfico y aumentar el margen superior
-    )
-
-    # Crear gráfico circular para departamentos o distritos
-    if departamento_seleccionado == "Todos":
-        datos_agrupados = datos_filtrados.groupby('DEPARTAMENTO')['Cantidad'].sum().nlargest(15).reset_index()
-        fig_pie_ubicacion = px.pie(
-            datos_agrupados,
-            names='DEPARTAMENTO',
-            values='Cantidad',
-            title='Distribución porcentual por departamentos',
-            color_discrete_sequence=px.colors.qualitative.T10  # Colores más variados
-        )
-    else:
-        datos_agrupados = datos_filtrados.groupby('DISTRITO')['Cantidad'].sum().nlargest(15).reset_index()
-        fig_pie_ubicacion = px.pie(
-            datos_agrupados,
-            names='DISTRITO',
-            values='Cantidad',
-            title='Distribución porcentual por distritos',
-            color_discrete_sequence=px.colors.qualitative.T10  # Colores más variados
-        )
-    fig_pie_ubicacion.update_traces(textposition='inside', textinfo='percent+label')
-
-    # Personalizar el gráfico circular de ubicaciones
-    fig_pie_ubicacion.update_layout(
-        title={
-            'text': 'Distribución porcentual por ubicaciones',
-            'y':0.9,
-            'x':0.5,
-            'xanchor': 'center',
-            'yanchor': 'top'
-        },
-        paper_bgcolor='rgba(0, 51, 51, 1)',  # Fondo del gráfico
-        plot_bgcolor='rgba(255, 255, 255, 1)',  # Fondo del área de trazado
-        font=dict(color='white'),  # Texto blanco para contraste
-        width=800,  # Ajustar la anchura del gráfico
-        height=600,  # Ajustar la altura del gráfico
-        margin=dict(l=0, r=0, t=100, b=50)  # Centrando el gráfico y aumentar el margen superior
-    )
-
-    # Mostrar gráfico de barras centrado
-    st.markdown("<div style='display: flex; justify-content: center;'>", unsafe_allow_html=True)
-    st.plotly_chart(fig_bar, use_container_width=True)
-    st.markdown("</div>", unsafe_allow_html=True)
-
-    # Mostrar gráficos circulares en columnas
-    col1, col2 = st.columns(2)
-    with col1:
-        st.plotly_chart(fig_pie_residuos)
-    with col2:
-        st.plotly_chart(fig_pie_ubicacion)
-
-# Ejemplo de uso
-if __name__ == "__main__":
-    st.title("Análisis Avanzado de Residuos")
-    
-    # Subida de archivo
-    archivo = st.file_uploader("Sube tu archivo CSV", type="csv")
-    
-    if archivo:
-        # Cargar datos
-        datos = pd.read_csv(archivo)
-        filtros_avanzados(datos)
-
+    st.plotly_chart(fig_bar)
 
