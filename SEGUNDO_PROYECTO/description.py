@@ -66,7 +66,7 @@ def descripcion_app():
     st.markdown(
         f"""
         <div style="display: flex; justify-content: flex-end;">
-            <img src="{gif_url}" width="150" />
+            <img src="{gif_url}" width="100" />
         </div>
         """, unsafe_allow_html=True
     )
