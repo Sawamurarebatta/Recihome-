@@ -48,6 +48,16 @@ def distribucion_general(archivo_cargado):
         )
     )
 
+    # Descripción del gráfico
+    st.write(
+        """
+        El siguiente gráfico de barras horizontales describe la cantidad acumulada de residuos generados en tres regiones naturales: 
+        Costa, Sierra y Selva. Cada barra representa la cantidad total de residuos generados en cada región, destacando las 
+        diferencias en la producción de residuos entre ellas. Los colores asignados a cada región son específicos: la Costa 
+        está representada en un tono verde claro, la Sierra en un azul más suave, y la Selva en un tono azul profundo.
+        """
+    )
+
     # Mostrar el gráfico en Streamlit
     st.plotly_chart(fig)
 
@@ -99,6 +109,17 @@ def grafico_lineal_por_periodo(archivo_cargado):
         )
     )
 
+    # Descripción del gráfico
+    st.write(
+        """
+        Este gráfico de barras muestra la evolución de la cantidad de residuos generados a lo largo de los años. 
+        Cada barra representa el total de residuos por año, permitiendo visualizar cómo ha cambiado la generación de residuos 
+        a lo largo del tiempo. Las barras están diferenciadas por colores, con una paleta que varía entre tonos morados, rojos 
+        y naranjas, lo que facilita la distinción de cada año. Este gráfico permite identificar tendencias en la generación 
+        de residuos durante el periodo analizado.
+        """
+    )
+
     # Mostrar el gráfico en Streamlit
     st.plotly_chart(fig)
 
@@ -140,6 +161,17 @@ def grafico_lineal_por_periodo(archivo_cargado):
             title=dict(font=dict(color='white')),
             tickfont=dict(color='white')
         )
+    )
+
+    # Descripción del gráfico
+    st.write(
+        """
+        El siguiente gráfico de barras describe el departamento con mayor cantidad de residuos generados. 
+        A través de este gráfico, podemos identificar qué departamento tiene la mayor carga de residuos, 
+        lo cual es útil para focalizar esfuerzos en la reducción de residuos en las áreas más problemáticas. 
+        La barra correspondiente al departamento con mayor cantidad de residuos está destacada, lo que facilita 
+        la identificación visual de este departamento.
+        """
     )
 
     # Mostrar el gráfico en Streamlit
