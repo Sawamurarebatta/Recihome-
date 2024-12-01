@@ -37,10 +37,7 @@ def pagina_principal():
         <div class="logo">
             <img src="{logo_url}" alt="Recihome Logo">
         </div>
-        <p>
-            Una app centrada en la visualización, recolección y reciclaje de residuos en el hogar, 
-            permitiendo monitorear en tiempo real los residuos generados por los hogares en todo el Perú mediante gráficos y promedios de cada vivienda.
-        </p>
+        
         <p style="font-size: 18px; text-align: center;">
             Usa el menú de la izquierda para navegar entre páginas.
         </p>
