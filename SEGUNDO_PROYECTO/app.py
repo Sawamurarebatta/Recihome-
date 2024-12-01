@@ -69,10 +69,10 @@ elif selected == "Distribución general":
     distribucion_general(archivo_cargado)
     grafico_lineal_por_periodo(archivo_cargado)
 
-elif selected == "Mapa":
+elif selected == "Resumen":
     dashboard_residuos(archivo_cargado)
 
-elif selected == "Resumen":
+elif selected == "Descripción":
     st.title("Resumen")
     st.write("Aquí encontrarás un resumen general de la información.")
 
