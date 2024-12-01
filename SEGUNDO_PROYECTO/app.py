@@ -6,6 +6,7 @@ from distribucion_general import distribucion_general, grafico_lineal_por_period
 from filtros_avanzados import filtros_avanzados
 from mapa import dashboard_residuos
 from colores import colores  # Importar el diccionario de colores
+from description import descripcion_app  # Importar la función desde description.py
 
 # Configurar la página
 st.set_page_config(layout="wide")
@@ -36,7 +37,7 @@ except Exception as e:
 # Crear el menú horizontal
 selected = option_menu(
     menu_title="",
-    options=["Página principal","Descripción", "Distribución general", "Resumen", "Filtros Avanzados"],
+    options=["Página principal", "Descripción", "Distribución general", "Resumen", "Filtros Avanzados"],
     icons=["house", "clipboard", "bar-chart", "map", "filter"],
     menu_icon="cast",
     default_index=0,
@@ -73,8 +74,8 @@ elif selected == "Resumen":
     dashboard_residuos(archivo_cargado)
 
 elif selected == "Descripción":
-    st.title("Resumen")
-    st.write("Aquí encontrarás un resumen general de la información.")
+    descripcion_app()  # Llamar a la función desde description.py
 
 elif selected == "Filtros Avanzados":
     filtros_avanzados(archivo_cargado)
+
