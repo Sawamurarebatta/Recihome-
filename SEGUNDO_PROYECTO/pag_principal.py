@@ -4,9 +4,11 @@ import streamlit as st
 # Función para la página principal
 def pagina_principal():
     # URL del GIF de fondo
-    gif_url = "https://github.com/Sawamurarebatta/Recihome-/blob/main/SEGUNDO_PROYECTO/appl.gif?raw=true"  # URL del GIF
+    gif_url = "https://github.com/Sawamurarebatta/Recihome-/blob/main/SEGUNDO_PROYECTO/appl.gif?raw=true"
+    # URL del logotipo
+    logo_url = "https://github.com/Sawamurarebatta/Recihome-/blob/main/SEGUNDO_PROYECTO/logo.png?raw=true"
 
-    # Título de la aplicación con texto grande
+    # Título con logotipo
     st.markdown(f"""
         <style>
             .stApp {{
@@ -15,12 +17,16 @@ def pagina_principal():
                 background-size: cover;
                 background-position: center;
                 height: 100vh;
-                color: white;  /* Cambia el color de texto para hacerlo visible sobre el GIF */
+                color: white; /* Cambia el color de texto para hacerlo visible sobre el GIF */
             }}
-            h1 {{
-                font-size: 50px;
-                text-align: center;
-                font-family: 'Arial', sans-serif;
+            .logo {{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 20px;
+            }}
+            .logo img {{
+                width: 200px; /* Ajusta el tamaño del logo */
             }}
             p {{
                 font-size: 20px;
@@ -28,7 +34,9 @@ def pagina_principal():
                 font-family: 'Arial', sans-serif;
             }}
         </style>
-        <h1>Recihome</h1>
+        <div class="logo">
+            <img src="{logo_url}" alt="Recihome Logo">
+        </div>
         <p>
             Una app centrada en la visualización, recolección y reciclaje de residuos en el hogar, 
             permitiendo monitorear en tiempo real los residuos generados por los hogares en todo el Perú mediante gráficos y promedios de cada vivienda.
@@ -44,4 +52,3 @@ def pagina_principal():
             <img src="https://raw.githubusercontent.com/Sawamurarebatta/Recihome-/main/SEGUNDO_PROYECTO/planeta.png" width="150">
         </div>
     """, unsafe_allow_html=True)
-
