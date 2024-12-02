@@ -28,7 +28,7 @@ st.markdown(f"""
     """, unsafe_allow_html=True)
 
 # Cargar datos
-url = "https://raw.githubusercontent.com/Sawamurarebatta/Recihome-/main/SEGUNDO_PROYECTO/residuos.csv"
+url = "https://raw.githubusercontent.com/Sawamurarebatta/Recihome-/main/SEGUNDO_PROYECTO/archivos/residuos.csv"
 try:
     archivo_cargado = pd.read_csv(url, sep=';', encoding='latin1')
 except Exception as e:
