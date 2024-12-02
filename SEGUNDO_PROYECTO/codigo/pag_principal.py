@@ -4,10 +4,10 @@ import streamlit as st
 # Función para la página principal
 def pagina_principal():
     # URL del GIF de fondo
-    gif_url = "https://github.com/Sawamurarebatta/Recihome-/blob/main/SEGUNDO_PROYECTO/appl.gif?raw=true"  # URL del GIF
+    gif_url = "https://github.com/Sawamurarebatta/Recihome-/blob/main/SEGUNDO_PROYECTO/archivos/appl.gif?raw=true"  # URL del GIF
 
     # URL del logo
-    logo_url = "https://github.com/Sawamurarebatta/Recihome-/blob/main/SEGUNDO_PROYECTO/logo.png?raw=true"  # URL del logo
+    logo_url = "https://github.com/Sawamurarebatta/Recihome-/blob/main/SEGUNDO_PROYECTO/archivos/logo.png?raw=true"  # URL del logo
 
     # Diseño de la página
     st.markdown(f"""
