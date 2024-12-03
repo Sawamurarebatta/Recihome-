@@ -3,26 +3,9 @@ import plotly.express as px
 import pandas as pd
 
 def filtros_avanzados(archivo_cargado):
-    # Validar que el DataFrame no esté vacío
-    if archivo_cargado.empty:
-        st.error("El archivo cargado está vacío. Por favor, carga un archivo válido.")
-        return
-    
-    # Verificar que las columnas necesarias existan
-    required_columns = ['REG_NAT', 'DEPARTAMENTO', 'DISTRITO', 'PERIODO', 'QRESIDUOS_DOM']
-    missing_columns = [col for col in required_columns if col not in archivo_cargado.columns]
-    if missing_columns:
-        st.error(f"Las siguientes columnas no se encuentran en el archivo cargado: {', '.join(missing_columns)}")
-        st.write("Columnas disponibles:", list(archivo_cargado.columns))
-        return
-    
-    # Seleccionar rango de columnas de residuos
-    try:
-        columnas_residuos = archivo_cargado.loc[:, 'QRESIDUOS_DOM':archivo_cargado.columns[-2]].columns
-    except KeyError as e:
-        st.error(f"Error al seleccionar columnas: {e}")
-        return
-    
+ 
+    columnas_residuos = archivo_cargado.loc[:, 'QRESIDUOS_DOM':archivo_cargado.columns[-2]].columns
+   
     st.header("Filtros para el análisis avanzado")
     
     col1, col2, col3, col4 = st.columns(4)
